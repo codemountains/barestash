@@ -1,0 +1,21 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+allowBuilds:
+  '@github/keytar': true
+  '@parcel/watcher': false
+  esbuild: true
+  sharp: true
+  workerd: true
+minimumReleaseAgeExclude:
+  - '@cloudflare/workers-types@5.20260706.1'
+  - '@vitest/expect@4.1.10'
+  - '@vitest/mocker@4.1.10'
+  - '@vitest/pretty-format@4.1.10'
+  - '@vitest/runner@4.1.10'
+  - '@vitest/snapshot@4.1.10'
+  - '@vitest/spy@4.1.10'
+  - '@vitest/utils@4.1.10'
+  - hono@4.12.28
+  - vitest@4.1.10
+  - '@modelcontextprotocol/server@2.0.0-beta.3'

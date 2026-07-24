@@ -1,0 +1,17 @@
+globs:
+  - "**/*.md"
+  - "**/*.mdx"
+
+ignores:
+  - "**/node_modules/**"
+  - .git/**
+  - .github/pull_request_template.md
+  - "**/dist/**"
+  - "**/build/**"
+  - "**/coverage/**"
+  - .turbo/**
+  - .wrangler/**
+  - .direnv/**
+
+config:
+  MD013: false

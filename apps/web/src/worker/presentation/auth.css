@@ -1,0 +1,205 @@
+@import "tailwindcss" source(".");
+
+@plugin "daisyui" {
+  themes: false;
+  include: alert, badge, button, card, divider, fieldset, input;
+}
+
+@plugin "daisyui/theme" {
+  name: "barestash-light";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-base-100: oklch(100% 0 0);
+  --color-base-200: oklch(97% 0.004 264);
+  --color-base-300: oklch(92% 0.007 264);
+  --color-base-content: oklch(21% 0.034 264);
+  --color-primary: oklch(59% 0.145 163);
+  --color-primary-content: oklch(98% 0.014 180);
+  --color-secondary: oklch(58% 0.11 205);
+  --color-secondary-content: oklch(98% 0.01 205);
+  --color-accent: oklch(64% 0.16 156);
+  --color-accent-content: oklch(98% 0.014 180);
+  --color-neutral: oklch(28% 0.032 256);
+  --color-neutral-content: oklch(96% 0.004 264);
+  --color-info: oklch(62% 0.18 255);
+  --color-info-content: oklch(98% 0.01 255);
+  --color-success: oklch(64% 0.17 149);
+  --color-success-content: oklch(98% 0.014 180);
+  --color-warning: oklch(79% 0.18 86);
+  --color-warning-content: oklch(28% 0.06 55);
+  --color-error: oklch(62% 0.2 25);
+  --color-error-content: oklch(98% 0.01 25);
+  --radius-selector: 0.65rem;
+  --radius-field: 0.65rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "barestash-dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: dark;
+  --color-base-100: oklch(21% 0.028 264);
+  --color-base-200: oklch(17% 0.022 264);
+  --color-base-300: oklch(29% 0.03 264);
+  --color-base-content: oklch(96% 0.004 264);
+  --color-primary: oklch(72% 0.17 162);
+  --color-primary-content: oklch(17% 0.035 163);
+  --color-secondary: oklch(72% 0.12 205);
+  --color-secondary-content: oklch(17% 0.03 205);
+  --color-accent: oklch(76% 0.15 156);
+  --color-accent-content: oklch(17% 0.035 163);
+  --color-neutral: oklch(37% 0.03 256);
+  --color-neutral-content: oklch(96% 0.004 264);
+  --color-info: oklch(72% 0.15 255);
+  --color-info-content: oklch(17% 0.03 255);
+  --color-success: oklch(72% 0.17 149);
+  --color-success-content: oklch(17% 0.035 149);
+  --color-warning: oklch(82% 0.16 86);
+  --color-warning-content: oklch(22% 0.05 55);
+  --color-error: oklch(72% 0.16 25);
+  --color-error-content: oklch(18% 0.04 25);
+  --radius-selector: 0.65rem;
+  --radius-field: 0.65rem;
+  --radius-box: 1rem;
+  --size-selector: 0.25rem;
+  --size-field: 0.25rem;
+  --border: 1px;
+  --depth: 1;
+  --noise: 0;
+}
+
+@theme {
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+    monospace;
+}
+
+@layer base {
+  button,
+  a,
+  input {
+    transition-duration: 150ms;
+    transition-property:
+      color, background-color, border-color, box-shadow, opacity, transform;
+    transition-timing-function: ease-out;
+  }
+}
+
+@layer components {
+  .auth-shell {
+    background-image: radial-gradient(
+      circle at 50% -10%,
+      color-mix(in oklch, var(--color-primary) 14%, transparent),
+      transparent 31rem
+    );
+  }
+
+  .auth-card {
+    animation: auth-card-in 240ms ease-out both;
+    backdrop-filter: blur(12px);
+  }
+
+  .auth-wordmark::before {
+    width: 0.55rem;
+    height: 0.55rem;
+    margin-right: 0.65rem;
+    border-radius: 9999px;
+    background: var(--color-primary);
+    box-shadow: 0 0 1.25rem
+      color-mix(in oklch, var(--color-primary) 48%, transparent);
+    content: "";
+  }
+
+  .device-code-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 1.75rem minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .device-code-group {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: clamp(0.3rem, 1.3vw, 0.45rem);
+    min-width: 0;
+  }
+
+  .device-code-separator {
+    justify-self: center;
+    color: color-mix(in oklch, var(--color-base-content) 45%, transparent);
+    font-family: var(--font-mono);
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .auth-state-icon {
+    display: grid;
+    width: 3.5rem;
+    height: 3.5rem;
+    place-items: center;
+    border-radius: 9999px;
+  }
+
+  .auth-state-icon-success {
+    color: var(--color-success);
+    background: color-mix(in oklch, var(--color-success) 14%, transparent);
+  }
+
+  .auth-state-icon-muted {
+    color: color-mix(in oklch, var(--color-base-content) 65%, transparent);
+    background: color-mix(in oklch, var(--color-base-content) 9%, transparent);
+  }
+
+  .auth-state-icon-error {
+    color: var(--color-error);
+    background: color-mix(in oklch, var(--color-error) 13%, transparent);
+  }
+}
+
+/* Keep these overrides outside cascade layers so they outrank daisyUI's
+   nested input layer and allow each field to shrink with its grid track. */
+.input.device-code-input {
+  width: 100%;
+  min-width: 0;
+  height: auto;
+  aspect-ratio: 1;
+  padding: 0;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: clamp(1rem, 5vw, 1.35rem);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+@keyframes auth-card-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.35rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auth-card {
+    animation: none;
+  }
+
+  button,
+  a,
+  input {
+    transition: none;
+  }
+}

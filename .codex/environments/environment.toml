@@ -1,0 +1,46 @@
+version = 1
+name = "barestash"
+
+[setup]
+script = """
+set -eu
+
+if command -v direnv >/dev/null 2>&1 && [ -f .envrc ]; then
+  if direnv allow && direnv_exports="$(direnv export bash)" && eval "$direnv_exports"; then
+    :
+  else
+    echo "warning: direnv failed; continuing with explicit setup fallback" >&2
+  fi
+fi
+
+if { ! command -v just >/dev/null 2>&1 || ! command -v pnpm >/dev/null 2>&1; } && command -v nix >/dev/null 2>&1; then
+  exec nix --extra-experimental-features nix-command --extra-experimental-features flakes develop --command just install
+fi
+
+just install
+"""
+
+[cleanup]
+script = """
+rm -rf .direnv
+"""
+
+[[actions]]
+name = "Check"
+icon = "run"
+command = "nix --extra-experimental-features nix-command --extra-experimental-features flakes develop --command just check"
+
+[[actions]]
+name = "Test"
+icon = "run"
+command = "nix --extra-experimental-features nix-command --extra-experimental-features flakes develop --command just test"
+
+[[actions]]
+name = "Dev API"
+icon = "run"
+command = "nix --extra-experimental-features nix-command --extra-experimental-features flakes develop --command just dev-api"
+
+[[actions]]
+name = "Dev CLI"
+icon = "run"
+command = "nix --extra-experimental-features nix-command --extra-experimental-features flakes develop --command just dev-cli"

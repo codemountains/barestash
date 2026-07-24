@@ -1,0 +1,19 @@
+{
+  "name": "@barestash/cli",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "bin": {
+    "barestash": "./src/barestash.ts"
+  },
+  "scripts": {
+    "dev": "tsx src/barestash.ts",
+    "test": "vitest run --config vitest.config.ts",
+    "typecheck": "tsc --noEmit --project tsconfig.typecheck.json --pretty false"
+  },
+  "dependencies": {
+    "@barestash/shared": "workspace:*",
+    "@github/keytar": "7.10.6",
+    "commander": "15.0.0"
+  }
+}

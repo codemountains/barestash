@@ -1,0 +1,18 @@
+{
+  "name": "@barestash/api",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "db:migrate:local": "CI=1 wrangler d1 migrations apply barestash --local --persist-to .wrangler/state --config wrangler.toml",
+    "dev": "pnpm run db:migrate:local && wrangler dev --config wrangler.toml --persist-to .wrangler/state",
+    "test": "vitest run --config vitest.config.ts",
+    "typecheck": "tsc --noEmit --project tsconfig.typecheck.json --pretty false"
+  },
+  "dependencies": {
+    "@barestash/shared": "workspace:*",
+    "@modelcontextprotocol/server": "2.0.0-beta.3",
+    "hono": "4.12.28",
+    "zod": "4.4.3"
+  }
+}

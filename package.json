@@ -1,0 +1,32 @@
+{
+  "name": "barestash",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.10.0",
+  "scripts": {
+    "barestash": "tsx apps/cli/src/barestash.ts",
+    "check": "pnpm typecheck && biome check . && pnpm lint:md && pnpm test",
+    "lint:md": "markdownlint-cli2",
+    "lint:md:fix": "markdownlint-cli2 --fix",
+    "dev:api": "pnpm --filter @barestash/api dev",
+    "dev:cli": "pnpm --filter @barestash/cli dev",
+    "format": "biome check --write .",
+    "lint": "biome lint .",
+    "test": "vitest run",
+    "test:e2e": "vitest run --config vitest.smoke.config.ts",
+    "test:coverage": "vitest run --coverage",
+    "typecheck": "pnpm --filter @barestash/shared typecheck && pnpm --filter @barestash/api typecheck && pnpm --filter @barestash/cli typecheck && pnpm --filter @barestash/web typecheck"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.3",
+    "@cloudflare/workers-types": "5.20260706.1",
+    "@types/node": "26.1.0",
+    "@vitest/coverage-v8": "4.1.10",
+    "markdownlint-cli2": "^0.23.0",
+    "tsx": "4.23.0",
+    "typescript": "6.0.3",
+    "vitest": "4.1.10",
+    "wrangler": "4.107.0"
+  }
+}

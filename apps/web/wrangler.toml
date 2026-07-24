@@ -1,0 +1,43 @@
+name = "barestash-web"
+main = "src/worker/worker.ts"
+compatibility_date = "2026-07-06"
+compatibility_flags = ["nodejs_compat"]
+
+[build]
+command = "pnpm --filter @barestash/web build:assets"
+watch_dir = ["src/worker/presentation", "src/browser"]
+
+[assets]
+directory = "./public"
+not_found_handling = "none"
+run_worker_first = ["/", "/device", "/device/*", "/sign-in/*", "/api/auth/*"]
+
+[vars]
+BARESTASH_APP_ORIGIN = "http://localhost:8788"
+BARESTASH_ENVIRONMENT = "development"
+
+# This file provides local-development bindings and Worker-bundle inputs.
+# Supply BARESTASH_CREDENTIAL_PEPPER, BETTER_AUTH_SECRET, and GitHub/Google OAuth
+# client credentials through an ignored .dev.vars file locally.
+[[d1_databases]]
+binding = "DB"
+database_name = "barestash"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+migrations_table = "web_d1_migrations"
+
+[[ratelimits]]
+name = "OAUTH_RATE_LIMITER"
+namespace_id = "7411"
+
+[ratelimits.simple]
+limit = 10
+period = 60
+
+[[ratelimits]]
+name = "DEVICE_APPROVAL_RATE_LIMITER"
+namespace_id = "7412"
+
+[ratelimits.simple]
+limit = 10
+period = 60

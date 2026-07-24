@@ -1,0 +1,84 @@
+name: Feature request
+description: Propose a new capability or change to Barestash behavior.
+title: "[Feature]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Barestash is a headless request stash for incoming webhooks, CLI workflows, APIs, event streams, and AI agents.
+
+        Please keep proposals generic unless provider-specific behavior is explicitly required. Do not include tokens, credentials, private endpoint URLs, captured raw payloads, or user data.
+
+        For security vulnerabilities, do not use this form. Follow
+        [SECURITY.md](https://github.com/codemountains/barestash/blob/main/SECURITY.md)
+        and report privately instead.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What user problem should this solve?
+      placeholder: Describe the workflow, integration, or automation need.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed behavior
+      description: What should Barestash do?
+      placeholder: Describe the expected behavior, command, API, stream, or documentation change.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Primary area
+      options:
+        - CLI
+        - API
+        - Event streaming
+        - Endpoint management
+        - Auth or tokens
+        - Raw request storage
+        - Documentation
+        - Development environment
+        - Unsure
+    validations:
+      required: true
+  - type: checkboxes
+    id: interfaces
+    attributes:
+      label: Affected interfaces
+      description: Select any interfaces that may need design or documentation updates.
+      options:
+        - label: CLI command, flags, output, or local config
+        - label: API endpoint or response shape
+        - label: Event stream, JSON, or JSONL contract
+        - label: Auth, token, or secret handling
+        - label: Endpoint selection or endpoint lifecycle
+        - label: Requirements, README, docs, or agent workflow guidance
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Optional. Mention workarounds or other designs.
+    validations:
+      required: false
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: How should maintainers know this is complete?
+      placeholder: |
+        - ...
+        - ...
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Reporter checklist
+      options:
+        - label: This proposal fits Barestash as a headless, CLI/API/streaming-first request stash.
+          required: true
+        - label: I have not included secrets, private endpoints, captured raw payloads, or user data.
+          required: true

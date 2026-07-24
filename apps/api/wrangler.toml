@@ -1,0 +1,111 @@
+name = "barestash-api"
+main = "src/worker.ts"
+compatibility_date = "2026-07-06"
+
+[vars]
+BARESTASH_APP_ORIGIN = "http://localhost:8788"
+
+# Supply BARESTASH_CREDENTIAL_PEPPER through an ignored .dev.vars file.
+
+[triggers]
+crons = ["0 * * * *"]
+
+# This file provides local-development bindings and Worker-bundle inputs.
+# Local development uses Miniflare state under .wrangler/state.
+[[d1_databases]]
+binding = "DB"
+database_name = "barestash"
+database_id = "00000000-0000-0000-0000-000000000000"
+migrations_dir = "migrations"
+
+[[r2_buckets]]
+binding = "REQUEST_BODIES"
+bucket_name = "barestash-request-bodies"
+
+[[durable_objects.bindings]]
+name = "ENDPOINT_STREAMS"
+class_name = "EndpointStream"
+
+[[ratelimits]]
+name = "ABUSE_IP_RATE_LIMITER"
+namespace_id = "7401"
+
+[ratelimits.simple]
+limit = 300
+period = 60
+
+[[ratelimits]]
+name = "INGEST_ENDPOINT_RATE_LIMITER"
+namespace_id = "7402"
+
+[ratelimits.simple]
+limit = 120
+period = 60
+
+[[ratelimits]]
+name = "ENDPOINT_CREATION_RATE_LIMITER"
+namespace_id = "7403"
+
+[ratelimits.simple]
+limit = 5
+period = 60
+
+[[ratelimits]]
+name = "PAT_WRITE_RATE_LIMITER"
+namespace_id = "7410"
+
+[ratelimits.simple]
+limit = 10
+period = 60
+
+[[ratelimits]]
+name = "REFRESH_RATE_LIMITER"
+namespace_id = "7413"
+
+[ratelimits.simple]
+limit = 10
+period = 60
+
+[[ratelimits]]
+name = "MCP_RATE_LIMITER"
+namespace_id = "7405"
+
+[ratelimits.simple]
+limit = 60
+period = 60
+
+[[ratelimits]]
+name = "DEVICE_CREATION_RATE_LIMITER"
+namespace_id = "7408"
+
+[ratelimits.simple]
+limit = 10
+period = 60
+
+[[ratelimits]]
+name = "DEVICE_POLL_RATE_LIMITER"
+namespace_id = "7409"
+
+[ratelimits.simple]
+limit = 120
+period = 60
+
+[[ratelimits]]
+name = "WRITE_RATE_LIMITER"
+namespace_id = "7406"
+
+[ratelimits.simple]
+limit = 30
+period = 60
+
+[[ratelimits]]
+name = "SSE_RATE_LIMITER"
+namespace_id = "7407"
+
+[ratelimits.simple]
+limit = 30
+period = 60
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["EndpointStream"]

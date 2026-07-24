@@ -1,0 +1,2 @@
+# Local-only API Worker values. Do not commit real secrets.
+BARESTASH_CREDENTIAL_PEPPER=replace-with-a-local-development-pepper

@@ -1,0 +1,7 @@
+# Local-only Better Auth and GitHub/Google OAuth values. Do not commit real secrets.
+BARESTASH_CREDENTIAL_PEPPER=replace-with-the-same-local-pepper-as-apps-api
+BETTER_AUTH_SECRET=replace-with-at-least-32-random-characters
+GITHUB_CLIENT_ID=replace-with-your-github-oauth-client-id
+GITHUB_CLIENT_SECRET=replace-with-your-github-oauth-client-secret
+GOOGLE_CLIENT_ID=replace-with-your-google-oauth-client-id
+GOOGLE_CLIENT_SECRET=replace-with-your-google-oauth-client-secret

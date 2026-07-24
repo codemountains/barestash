@@ -1,0 +1,25 @@
+{
+  "name": "@barestash/shared",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./auth": "./src/auth.ts",
+    "./auth-audit": "./src/auth-audit.ts",
+    "./bearer-tokens": "./src/bearer-tokens.ts",
+    "./endpoint-secrets": "./src/endpoint-secrets.ts",
+    "./endpoints": "./src/endpoints.ts",
+    "./errors": "./src/errors.ts",
+    "./events": "./src/events.ts",
+    "./headers": "./src/headers.ts",
+    "./http": "./src/http.ts",
+    "./ids": "./src/ids.ts",
+    "./limits": "./src/limits.ts",
+    "./personal-access-tokens": "./src/personal-access-tokens.ts",
+    "./sse": "./src/sse.ts"
+  },
+  "scripts": {
+    "test": "vitest run --config vitest.config.ts",
+    "typecheck": "tsc --noEmit --pretty false"
+  }
+}

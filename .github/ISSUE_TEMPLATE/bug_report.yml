@@ -1,0 +1,93 @@
+name: Bug report
+description: Report incorrect or unexpected Barestash behavior.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug.
+
+        Do not include tokens, credentials, private endpoint URLs, captured raw payloads, or sensitive request headers. Redact examples before posting.
+
+        For security vulnerabilities, do not use this form. Follow
+        [SECURITY.md](https://github.com/codemountains/barestash/blob/main/SECURITY.md)
+        and report privately instead.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What is broken?
+      placeholder: Describe the bug in one or two sentences.
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      description: Which part of Barestash is affected?
+      options:
+        - CLI
+        - API
+        - Event streaming
+        - Endpoint management
+        - Auth or tokens
+        - Raw request storage
+        - Documentation
+        - Development environment
+        - Unknown or multiple areas
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Provide the smallest reliable reproduction.
+      placeholder: |
+        1. Run ...
+        2. Send ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What should have happened?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: What happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Include relevant local environment details.
+      placeholder: |
+        - OS:
+        - Shell:
+        - Barestash version or commit:
+        - Nix/direnv status:
+    validations:
+      required: false
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or output
+      description: Paste only redacted logs, command output, or error messages.
+      render: shell
+    validations:
+      required: false
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Reporter checklist
+      options:
+        - label: I have removed tokens, credentials, private endpoint URLs, captured raw payloads, and sensitive request headers.
+          required: true
+        - label: I checked whether this affects documented CLI, API, auth, token, endpoint, or event behavior.
+          required: false

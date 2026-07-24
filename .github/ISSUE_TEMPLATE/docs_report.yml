@@ -1,0 +1,69 @@
+name: Documentation report
+description: Report stale, contradictory, missing, or unclear documentation.
+title: "[Docs]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form for documentation drift, missing guidance, broken links, or contradictions between README, requirements, docs, AGENTS.md, and implementation.
+
+        For security vulnerabilities, do not use this form. Follow
+        [SECURITY.md](https://github.com/codemountains/barestash/blob/main/SECURITY.md)
+        and report privately instead.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: What documentation issue should be fixed?
+      placeholder: Describe the stale, missing, contradictory, or unclear documentation.
+    validations:
+      required: true
+  - type: textarea
+    id: affected_docs
+    attributes:
+      label: Affected documentation
+      description: List the files, sections, or links involved.
+      placeholder: |
+        - README.md
+        - requirements/barestash.spec.md
+        - docs/README.md
+    validations:
+      required: true
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Issue type
+      options:
+        - Stale guidance
+        - Contradiction
+        - Missing documentation
+        - Broken or incorrect link
+        - Unclear wording
+        - Ownership/source-of-truth mismatch
+    validations:
+      required: true
+  - type: textarea
+    id: expected_source
+    attributes:
+      label: Expected source of truth
+      description: Which requirement, doc, implementation detail, or workflow should the documentation match?
+      placeholder: Link or name the expected source of truth if known.
+    validations:
+      required: false
+  - type: textarea
+    id: impact
+    attributes:
+      label: Impact
+      description: Who is misled or blocked by this documentation issue?
+      placeholder: Explain the impact on users, implementers, reviewers, or operators.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Reporter checklist
+      options:
+        - label: I checked for related guidance in README.md, requirements/, docs/, AGENTS.md, or .agents/skills/.
+          required: false
+        - label: I have not included secrets, private endpoints, captured raw payloads, or user data.
+          required: true

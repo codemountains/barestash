@@ -1,0 +1,26 @@
+{
+  "name": "@barestash/web",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:assets": "pnpm run build:browser && pnpm run build:css",
+    "build:browser": "tsc --project tsconfig.browser.json --pretty false",
+    "build:css": "tailwindcss -i src/worker/presentation/auth.css -o public/assets/auth.css --minify",
+    "db:migrate:local": "CI=1 wrangler d1 migrations apply barestash --local --persist-to ../api/.wrangler/state --config wrangler.toml",
+    "dev": "pnpm run db:migrate:local && wrangler dev --config wrangler.toml --persist-to ../api/.wrangler/state --port 8788",
+    "test": "vitest run --config vitest.config.ts",
+    "typecheck": "tsc --noEmit --project tsconfig.typecheck.json --pretty false && tsc --noEmit --project tsconfig.browser.json --pretty false"
+  },
+  "dependencies": {
+    "@barestash/shared": "workspace:*",
+    "better-auth": "1.6.23",
+    "hono": "4.12.28"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.2",
+    "daisyui": "5.6.18",
+    "jsdom": "29.1.1",
+    "tailwindcss": "4.3.2"
+  }
+}
